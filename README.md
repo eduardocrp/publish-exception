@@ -1,4 +1,4 @@
-# publish-exception
+# Publish Exception
 Publish Exception é um sistema que centraliza a publicação de exceções de diferentes aplicações para diferentes canais de notificação. O objetivo do projeto é simplificar o processo de notificação de exceções e fornecer uma visão centralizada de todas as exceções que ocorrem no sistema.
 
 ## Componentes do sistema
