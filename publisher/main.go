@@ -3,11 +3,11 @@ package main
 import (
 	"flag"
 	"log"
+	"publish-expcetion/publisher/nats"
 	pub "publish-expcetion/publisher/publisher"
-	"publish-expcetion/publisher/publisher/kafka"
 )
 
-var publisher = kafka.DefaultKafkaPublisher{}
+var publisher = nats.DefaultNatsPublisher{}
 
 func main() {
 	message := loadMessageArgs()
