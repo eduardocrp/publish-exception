@@ -7,7 +7,7 @@ import (
 	pub "publish-expcetion/publisher/publisher"
 )
 
-var publisher = nats.DefaultNatsPublisher{}
+var publisher pub.Publisher = nats.DefaultNatsPublisher{}
 
 func main() {
 	message := loadMessageArgs()
