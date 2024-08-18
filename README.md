@@ -1,11 +1,16 @@
 # Publish Exception
 Publish Exception é um sistema que centraliza a publicação de exceções de diferentes aplicações para diferentes canais de notificação. O objetivo do projeto é simplificar o processo de notificação de exceções e fornecer uma visão centralizada de todas as exceções que ocorrem no sistema.
 
+![Image](/publish-exception.svg)
+
 ## Componentes do sistema
 
-Publisher: São responsáveis publicar as mensagens de exceção das aplicações para o tópico de exceções dentro de um container Docker
-Tópico de exceções: O tópico de exceções é um tópico que recebe as mensagens de exceção das aplicações
-Publish Exception Manager: O Publish Exception Manager é um serviço responsável por consumir as mensagens de exceção do tópico de exceções e publicar as exceções para os canais de notificação
+### Publisher
+São responsáveis publicar as mensagens de exceção das aplicações para o tópico de exceções dentro de um container Docker
+### Subjects de exceções
+O subject de exceção recebe as mensagens de exceção da aplicação
+### Publish Exception Manager
+O Publish Exception Manager é um serviço responsável por consumir as mensagens de exceção dos subjects de exceções e publicar as exceções para os canais de notificação
 
 ## Funcionalidades do sistema
 
