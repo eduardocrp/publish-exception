@@ -1,17 +1,16 @@
-package webhook
+package connectors
 
 import (
 	"bytes"
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"publish-expcetion/manager/connectors"
 )
 
-const webhookUrl = "https://hooks.slack.com/services/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"
+//const webhookUrl = "https://hooks.slack.com/services/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"
 
-func SendMessage(url string, message string) error {
-	requestBody := connectors.Message{
+func (c ConnectorConfig) SendMessage(message string) error {
+	requestBody := Message{
 		Content: message,
 	}
 	messageBytes, err := json.Marshal(requestBody)
@@ -19,7 +18,7 @@ func SendMessage(url string, message string) error {
 		return fmt.Errorf("erro ao marshalling a mensagem: %v", err)
 	}
 
-	resp, err := http.Post(url, "application/json", bytes.NewBuffer(messageBytes))
+	resp, err := http.Post(c.Url, "application/json", bytes.NewBuffer(messageBytes))
 	if err != nil {
 		return fmt.Errorf("erro ao enviar a mensagem: %v", err)
 	}

@@ -4,6 +4,10 @@ type Message struct {
 	Content string `json:"text"`
 }
 
+type ConnectorConfig struct {
+	Url string
+}
+
 type Connector interface {
-	SendMessage(url string, message string) error
+	SendMessage(message string) error
 }

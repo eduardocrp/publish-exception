@@ -6,7 +6,7 @@ import (
 	sub "publish-expcetion/manager/subscription"
 )
 
-var subs sub.Subscription = nats.DefaultNatsSubscrition{}
+var subs sub.Subscription = nats.DefaultNatsSubscription{}
 
 func main() {
 	fmt.Println("Iniciando Publish Exception Manager")
