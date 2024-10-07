@@ -3,18 +3,35 @@ package main
 import (
 	"flag"
 	"log"
-	"publish-expcetion/publisher/nats"
-	pub "publish-expcetion/publisher/publisher"
+	pub "publish-expcetion/publisher/publishers"
+	"publish-expcetion/publisher/publishers/nats"
+	"publish-expcetion/publisher/publishers/redis"
 )
 
-var publisher pub.Publisher = nats.DefaultNatsPublisher{}
+var publisher pub.Publisher
 
 func main() {
+	loadPublisher()
+
 	message := loadMessageArgs()
 
 	if err := message.Publish(publisher); err != nil {
 		log.Fatalf("Falha ao publicar: %s", err.Error())
 	}
+}
+
+func loadPublisher() {
+	messageProvider := flag.String("message_provider", "default", "Tipo de provedor de mensageria (redis ou nats)")
+
+	switch *messageProvider {
+	case "redis", "default":
+		publisher = redis.DefaultRedisPublisher{}
+	case "nats":
+		publisher = nats.DefaultNatsPublisher{}
+	default:
+		log.Fatalln("Não selecionado provedor de mensageria compatível. Provedores disponíveis: redis ou nats")
+	}
+
 }
 
 func loadMessageArgs() pub.MessageException {

@@ -1,4 +1,4 @@
-package publisher
+package publishers
 
 type MessageException struct {
 	ApplicationName string

@@ -3,7 +3,7 @@ package nats
 import (
 	"encoding/json"
 	"fmt"
-	pub "publish-expcetion/publisher/publisher"
+	pub "publish-expcetion/publisher/publishers"
 
 	"github.com/nats-io/nats.go"
 )
